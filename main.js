@@ -1,11 +1,7 @@
 import './style.css';
 import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
 import echarts from 'echarts/dist/echarts-en.common';
 import axios from 'axios';
-
-dayjs.extend(advancedFormat);
-window.dayjs = dayjs;
 
 export function colorHash(str) {
   let hash = 0;
@@ -28,7 +24,7 @@ export function colorHash(str) {
 }
 
 axios.get(import.meta.env.VITE_API_URL).then((users) => {
-  const series = users
+  const series = users.data
 
     // The user must have at least flagged once
     .filter((user) => user.data.length > 0 && user.success)
