@@ -2,7 +2,7 @@ const axios = require('axios');
 
 exports.handler = async function (event, context) {
   // Retreive users from team
-  const users = (await axios.get(`${CTF_API_URL}/api/v1/users?affiliation=${AFFILIATION}`)).data;
+  const users = (await axios.get(`${CTF_API_URL}/api/v1/users?affiliation=${VITE_AFFILIATION}`)).data;
 
   if (!users.success) {
     return {
