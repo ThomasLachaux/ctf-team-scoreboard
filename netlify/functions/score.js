@@ -2,7 +2,8 @@ const axios = require('axios');
 
 exports.handler = async function (event, context) {
   // Retreive users from team
-  const users = (await axios.get(`${CTF_API_URL}/api/v1/users?affiliation=${VITE_AFFILIATION}`)).data;
+  const users = (await axios.get(`${process.env.CTF_API_URL}/api/v1/users?affiliation=${process.env.VITE_AFFILIATION}`))
+    .data;
 
   if (!users.success) {
     return {
@@ -13,7 +14,7 @@ exports.handler = async function (event, context) {
 
   const result = await Promise.all(
     users.data.map(async (user) => {
-      const solves = (await axios.get(`${CTF_API_URL}/api/v1/users/${user.id}/solves`)).data;
+      const solves = (await axios.get(`${process.env.CTF_API_URL}/api/v1/users/${user.id}/solves`)).data;
 
       if (!solves.success) {
         return {
