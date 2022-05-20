@@ -27,7 +27,7 @@ export function colorHash(str) {
   return `hsl(${h}, ${s}%, ${l}%)`;
 }
 
-axios.get(import.meta.env.VITE_API_URL).then(() => {
+axios.get(import.meta.env.VITE_API_URL).then((users) => {
   const series = users
 
     // The user must have at least flagged once
@@ -57,8 +57,6 @@ axios.get(import.meta.env.VITE_API_URL).then(() => {
         data: scores,
       };
     });
-
-  console.log(series);
 
   const option = {
     title: {
